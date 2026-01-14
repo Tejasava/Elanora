@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Elanora Brand Colors */
+    --background: 20 100% 98%; /* Creamy Off-White #FFF7F3 */
+    --foreground: 340 30% 20%; /* Deep romantic brown */
+
+    --card: 0 0% 100%;
+    --card-foreground: 340 30% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 30% 20%;
+
+    --primary: 349 74% 81%; /* Light Blush Pink #f1abb9 */
+    --primary-foreground: 340 30% 15%;
+
+    --secondary: 270 73% 87%; /* Lavender Mist #DCC6F7 */
+    --secondary-foreground: 270 40% 25%;
+
+    --muted: 20 30% 95%;
+    --muted-foreground: 340 20% 45%;
+
+    --accent: 270 73% 87%;
+    --accent-foreground: 270 40% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 349 40% 90%;
+    --input: 349 40% 90%;
+    --ring: 349 74% 81%;
+
+    --radius: 1rem;
+
+    /* Custom brand tokens */
+    --blush: 349 74% 81%;
+    --lavender: 270 73% 87%;
+    --cream: 20 100% 98%;
+    --rose-gold: 10 60% 70%;
+    
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--primary) / 0.3), hsl(var(--secondary) / 0.3));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--cream)), hsl(var(--primary) / 0.1));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(var(--primary) / 0.05));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(var(--primary) / 0.2);
+    --shadow-hover: 0 12px 40px -8px hsl(var(--primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
+  }
+
+  .dark {
+    --background: 340 30% 8%;
+    --foreground: 20 100% 98%;
+
+    --card: 340 25% 12%;
+    --card-foreground: 20 100% 98%;
+
+    --popover: 340 25% 12%;
+    --popover-foreground: 20 100% 98%;
+
+    --primary: 349 74% 75%;
+    --primary-foreground: 340 30% 10%;
+
+    --secondary: 270 50% 40%;
+    --secondary-foreground: 270 73% 90%;
+
+    --muted: 340 20% 18%;
+    --muted-foreground: 340 15% 65%;
+
+    --accent: 270 50% 35%;
+    --accent-foreground: 270 73% 90%;
+
+    --border: 340 20% 20%;
+    --input: 340 20% 20%;
+    --ring: 349 74% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-romantic {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-hover hover:scale-105 active:scale-95;
+  }
+
+  .btn-outline-romantic {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary text-primary-foreground bg-transparent font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-soft;
+  }
+
+  .card-romantic {
+    @apply bg-card rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-hover hover:-translate-y-2;
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-card/80;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--cream));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
